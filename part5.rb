@@ -13,22 +13,3 @@ class Class
     end}
   end
 end
-
-
-
-
-
-class Foo
-  attr_accessor_with_history :bar
-end
-f = Foo.new
-f.bar = 1
-f.bar = 2
-print f.bar_history
-
-
-f = Foo.new
-f.bar = 3
-f.bar = :wowzo
-f.bar = 'boo!'
-print f.bar_history

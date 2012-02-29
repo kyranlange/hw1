@@ -4,11 +4,6 @@ def palindrome?(string)
   return string == string.reverse;
 end
 
-palindrome?("A man, a plan, a canal -- Panama")   #=> true
-palindrome?("Madam, I'm Adam!")   #=> true
-palindrome?("Abracadabra")  #=> false (nil is also ok)
-
-
 def count_words(string)
   string = string.downcase;
   words = string.split(/\W/);
@@ -24,6 +19,3 @@ def count_words(string)
   
   return word_count;
 end
-
-print count_words("A man, a plan, a canal -- Panama");
-print count_words "Doo bee doo bee doo";

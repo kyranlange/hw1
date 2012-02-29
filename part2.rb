@@ -32,16 +32,3 @@ def rps_tournament_winner(tournament)
     return rps_game_winner([rps_tournament_winner(tournament[0]), rps_tournament_winner(tournament[1])])
   end
 end
-
-tournament = 
-[
-  [
-    [ ["Armando", "P"], ["Dave", "S"] ],
-    [ ["Richard", "R"], ["Michael", "S"] ]
-  ],
-  [
-    [ ["Allen", "S"], ["Omer", "P"] ],
-    [ ["David E.", "R"], ["Richard X.", "P"] ]
-  ]
-]
-print rps_tournament_winner(tournament)

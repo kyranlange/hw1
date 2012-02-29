@@ -10,6 +10,3 @@ def combine_anagrams(words)
     
   return result.uniq
 end
-
-input = ['cars', 'for', 'Potatoes', 'racs', 'four', 'sCar', 'creams', 'scream']
-print combine_anagrams(input)
