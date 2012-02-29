@@ -3,13 +3,45 @@ class NoSuchStrategyError < StandardError ; end
 
 def rps_game_winner(game)
   raise WrongNumberOfPlayersError unless game.length == 2
+    
+  p1 = game[0]
+  p2 = game[1]
   
-  player1strat = game[0][1];
-  player2strat = game[1][1];
-  printf (player1strat + '\n');
-  printf (player2strat + '\n');
+  raise NoSuchStrategyError unless p1[1] =~ /[RPS]/i
+  raise NoSuchStrategyError unless p2[1] =~ /[RPS]/i
   
-  return game[0];
+  p1strat = p1[1].downcase
+  p2strat = p2[1].downcase
+  
+  if p2strat == 'r' and p1strat == 's'
+    return p2
+  elsif p2strat == 'p' and p1strat == 'r'
+    return p2
+  elsif p2strat == 's' and p1strat == 'p'
+    return p2
+  else 
+    return p1
+  end
 end
 
-rps_game_winner([["Armando","P"] ["Dave","S"]])
+
+def rps_tournament_winner(tournament)
+  if tournament[0][0].is_a?(String)
+    return rps_game_winner([tournament[0], tournament[1]])
+  else 
+    return rps_game_winner([rps_tournament_winner(tournament[0]), rps_tournament_winner(tournament[1])])
+  end
+end
+
+tournament = 
+[
+  [
+    [ ["Armando", "P"], ["Dave", "S"] ],
+    [ ["Richard", "R"], ["Michael", "S"] ]
+  ],
+  [
+    [ ["Allen", "S"], ["Omer", "P"] ],
+    [ ["David E.", "R"], ["Richard X.", "P"] ]
+  ]
+]
+print rps_tournament_winner(tournament)
